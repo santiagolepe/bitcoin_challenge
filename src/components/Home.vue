@@ -10,38 +10,7 @@
         <barchart ref="barchart" :chart-data="chartData" :height="300"></barchart>
       </div>
       <div class="col-sm-4">
-        <b-card bg-variant="light"
-        text-variant="black"
-        header="Calculator"
-        class="text-center">
-
-        <form id="calculator">
-          
-          <div class="form-group row">
-            <div class="col-sm-6">
-              <input type="number" class="form-control">
-            </div>                
-            <div class="col-sm-6">
-              <select  class="form-control">
-                <option value="BTC">BTC</option>
-                <option value="ETH">ETH</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="form-group row">                
-            <div class="col-sm-6">
-              <input type="number" class="form-control">
-            </div>                
-            <div class="col-sm-6">
-              <select class="form-control">
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-              </select>
-            </div>
-          </div>
-        </form>
-        </b-card>
+        <calculator ref="calculator" :coin="coins[0]"></calculator>  
       </div>
     </div>
 
@@ -68,6 +37,8 @@
 import { mapGetters } from 'vuex'
 import Barchart from './Barchart'
 import Tablebit from './Tablebit'
+import Calculator from './Calculator'
+import Vue from 'vue'
 
 export default {
   name: 'Home',
@@ -101,7 +72,7 @@ export default {
     }
   }),
 
-  components: { Barchart, Tablebit },
+  components: { Barchart, Tablebit, Calculator },
 
   computed: mapGetters({
     coins: 'coins'
@@ -119,6 +90,7 @@ export default {
       this.$refs.table2.update()
       this.BTC = this.coins[0].BTC.USD
       this.ETH = this.coins[0].ETH.USD
+      Vue.nextTick().then(_ => this.$refs.calculator.calculate())
     },
     deep: true
   },
