@@ -5,7 +5,7 @@ import axios from 'axios'
 Vue.use(Vuex)
 
 let coins = []
-for (let x = 0; x < 15; x++) {
+for (let x = 0; x < 11; x++) {
   coins.push({
     BTC: {USD: 0, EUR: 0},
     ETH: {USD: 0, EUR: 0},
@@ -28,17 +28,18 @@ const state = {
 
 // Mutations - they can change the state values, its must be Synchronous
 const mutations = {
+// {"BTC":{"USD":15819.66,"EUR":13512.38},"ETH":{"USD":466.34,"EUR":387.85}}
   setCoins (state, { data }) {
     data.date = new Date()
-    state.coins.splice(0, 1, data)
+    state.coins.unshift(data)
+    state.coins.pop()
   },
-// {"BTC":{"USD":15819.66,"EUR":13512.38},"ETH":{"USD":466.34,"EUR":387.85}}
   setLast10 (state, { data, query }) {
     data.Data.forEach((e, i) => {
       state.coins[i][query.from][query.to] = e.open
       state.coins[i].date = new Date(setDate(e.time))
     })
-    state.coins.shift()
+    Vue.set(state.coins, 1, state.coins[1])
   }
 }
 
