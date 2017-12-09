@@ -1,31 +1,3 @@
-Feature: As a visitor I should be able to see a graph with the last prices of
-the BTC and ETH currencies
-
-Scenario: Live graph
-  Given I'm a visitor
-  When I enter into the site
-  Then I should see the graph with the last prices of the BTC and ETH currencies
-  And the graph should be automatically updated in real time
-
-Feature: As a visitor I should be able to use the currency calculator
-
-Scenario: BTC to USD/EUR
-  Given I'm a visitor
-  When I enter into the site
-  And I select BTC as cryptocurrency in the calculator
-  And I enter 200 in the input
-  Then I should see the equivalent in USD
-  And If I change the currency to EUR
-  Then The calculator should update the equivalent in EUR
-
-Scenario: ETH to USD/EUR
-  Given I'm a visitor
-  When I enter into the site
-  And I select ETH as cryptocurrency in the calculator
-  And I enter 200 in the input
-  Then I should see the equivalent in USD
-  And If I change the currency to EUR
-  Then The calculator should update the equivalent in EUR
 
 Scenario: Auto-update accordingly with the last price
   Given I'm a visitor
