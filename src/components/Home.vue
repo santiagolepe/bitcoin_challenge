@@ -45,6 +45,21 @@
       </div>
     </div>
 
+    <div class="row mt-4 panel1">
+      <div class="col-sm-6"><h2>1 BTC = {{BTC}} USD</h2></div>
+      <div class="col-sm-6"><h2>1 ETH = {{ETH}} USD</h2></div>
+    </div>
+
+    <!-- TABLES   -->
+    <div class="row mt-4 panel1">
+      <div class="col-sm-6">
+        <tablebit ref="table" :header="'Bitcoin - BTC'" :coins="coins" :type="'BTC'"></tablebit>
+      </div>
+      <div class="col-sm-6">
+        <tablebit ref="table2" :header="'Etherium - ETH'" :coins="coins" :type="'ETH'"></tablebit>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -52,10 +67,13 @@
 
 import { mapGetters } from 'vuex'
 import Barchart from './Barchart'
+import Tablebit from './Tablebit'
 
 export default {
   name: 'Home',
   data: () => ({
+    BTC: 0,
+    ETH: 0,
     chartData: {
       labels: [],
       datasets: [
@@ -83,7 +101,7 @@ export default {
     }
   }),
 
-  components: { Barchart },
+  components: { Barchart, Tablebit },
 
   computed: mapGetters({
     coins: 'coins'
@@ -97,6 +115,10 @@ export default {
       this.chartData.datasets[2].data[0] = this.coins[0].ETH.EUR
       this.chartData.datasets[3].data[0] = this.coins[0].ETH.EUR
       this.$refs.barchart.update()
+      this.$refs.table.update()
+      this.$refs.table2.update()
+      this.BTC = this.coins[0].BTC.USD
+      this.ETH = this.coins[0].ETH.USD
     },
     deep: true
   },
@@ -124,8 +146,9 @@ a {
 }
 .title {
   text-align: center;
+  margin: 40px;
 }
 .panel1{
-  height: 500px;
+  margin: 50px 0 50px 0;
 }
 </style>
