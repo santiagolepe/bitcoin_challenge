@@ -15,8 +15,8 @@
     </div>
 
     <div class="row mt-4 panel1">
-      <div class="col-sm-6"><h2>1 BTC = {{BTC}} USD</h2></div>
-      <div class="col-sm-6"><h2>1 ETH = {{ETH}} USD</h2></div>
+      <div class="col-sm-6"><h2 id="BTC_current">1 BTC = {{BTC}} USD</h2></div>
+      <div class="col-sm-6"><h2 id="ETH_current">1 ETH = {{ETH}} USD</h2></div>
     </div>
 
     <!-- TABLES   -->
