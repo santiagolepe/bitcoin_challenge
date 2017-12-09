@@ -22,10 +22,10 @@
     <!-- TABLES   -->
     <div class="row mt-4 panel1">
       <div class="col-sm-6">
-        <tablebit ref="table" :header="'Bitcoin - BTC'" :coins="coins" :type="'BTC'"></tablebit>
+        <tablebit ref="table" :id="'table_BTC'" :header="'Bitcoin - BTC'" :coins="coins" :type="'BTC'"></tablebit>
       </div>
       <div class="col-sm-6">
-        <tablebit ref="table2" :header="'Etherium - ETH'" :coins="coins" :type="'ETH'"></tablebit>
+        <tablebit ref="table2" :id="'table_ETH'" :header="'Etherium - ETH'" :coins="coins" :type="'ETH'"></tablebit>
       </div>
     </div>
 
